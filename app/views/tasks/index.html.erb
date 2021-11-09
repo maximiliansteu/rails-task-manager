@@ -1,0 +1,13 @@
+<% @tasks.each do |task| %>
+<ul class="list-inline">
+  <li>
+    <input type="checkbox" <%= "checked" if task.completed %>>
+    <%= link_to  task.title, task_path(task.id) %> |
+    <%= task.details %> |
+    <%= link_to '🖊', edit_task_path(task.id) %> |
+    <%= link_to '🗑', destroy_task_path(task.id), method: :delete,
+            data: { confirm: "Are you sure?" } %>
+  </li>
+</ul>
+<% end %>
+<%= link_to '➕ Create new task', new_task_path %>
